@@ -74,7 +74,7 @@ export default function Rightbar({ user }) {
   useEffect(() => {
     const getFriends = async () => {
       try {
-        const friendList = await axios.get("/users/friends/" + user._id);
+        const friendList = await Axios.get("/users/friends/" + user._id);
         setFriends(friendList.data);
       } catch (err) {
         console.log(err);
@@ -111,7 +111,7 @@ export default function Rightbar({ user }) {
       
       
       try {
-        const res = await axios.post("https://api.cloudinary.com/v1_1/hareeshcloud/image/upload", data);
+        const res = await Axios.post("https://api.cloudinary.com/v1_1/hareeshcloud/image/upload", data);
         updatedUser.profilePicture=res.data.url;
         //console.log(res);
         } catch (err) { }
@@ -119,7 +119,7 @@ export default function Rightbar({ user }) {
       
       try {
        
-        await axios.put("/users/"+currentUser._id, updatedUser);
+        await Axios.put("/users/"+currentUser._id, updatedUser);
         localStorage.clear();
         window.location.reload();
       } catch (err) {}
