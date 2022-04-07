@@ -2,7 +2,7 @@ import React, { useEffect,useState } from 'react'
 import './message.css'
 import {format} from 'timeago.js'
 import axios from 'axios'
-
+import Axios from '../../config'
 export default function Message({message,own,user}) {
  // console.log(message);
  const PF= process.env.REACT_APP_PUBLIC_FOLDER
@@ -10,7 +10,7 @@ export default function Message({message,own,user}) {
  useEffect(()=>{
     const getUser=async()=>{
       try{
-        const res = await axios.get('/users?userId='+user);
+        const res = await Axios.get('/users?userId='+user);
         setCurrentSender(res.data)
       }catch(err){
         console.log(err);

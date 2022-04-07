@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './conversation.css'
 import axios from 'axios';
+import Axios from '../../config';
 // import no_avatar from "../../../public/assets/no_avatar.png"
 export default function Conversation({conversation, currentUser}) {
   const [user,setUser]=useState(null);
@@ -10,7 +11,7 @@ export default function Conversation({conversation, currentUser}) {
     const getUser=async()=>{
       try{
 
-        const res =await axios("/users?userId="+friendId);
+        const res =await Axios("/users?userId="+friendId);
         setUser(res.data);
         //console.log(user);
       }catch(err){

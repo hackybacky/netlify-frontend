@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router';
 import axios from 'axios'
+import Axios from '../../config';
 export default function Register() {
     const username = useRef();
     const email = useRef();
@@ -24,7 +25,7 @@ export default function Register() {
 
             };
             try {
-                const res=await axios.post('/auth/register', user);
+                const res=await Axios.post('/auth/register', user);
                 console.log(res);
                 history('/login');
 

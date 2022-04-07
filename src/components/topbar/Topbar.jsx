@@ -7,7 +7,7 @@ import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 //importing from material ui
 import { Link, useNavigate, Navigate } from "react-router-dom";
-
+import Axios from "../../config";
 export default function Topbar() {
   const { user } = useContext(AuthContext);
   console.log(user._id);
@@ -20,7 +20,7 @@ export default function Topbar() {
 
       console.log(e.target.value);
       try {
-        const res = await axios.get(`/users/?username=${e.target.value}`);
+        const res = await Axios.get(`/users/?username=${e.target.value}`);
 
         navigate("/profile/" + e.target.value);
       } catch (err) {

@@ -5,6 +5,7 @@ import {AuthContext} from '../../context/AuthContext'
 import { useContext } from 'react';
 import { useState, useRef } from 'react';
 import axios from 'axios'
+import Axios from '../../config';
 export default function Share() {
     const { user } = useContext(AuthContext);
     const [file, setFile] = useState(null)
@@ -30,7 +31,7 @@ export default function Share() {
             } catch (err) { }
         }
         try {
-            await axios.post('/posts', newPost)
+            await Axios.post('/posts', newPost)
             window.location.reload();
         } catch (err) {
             console.log(err);

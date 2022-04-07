@@ -8,7 +8,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 import { io } from "socket.io-client";
-
+import Axios from "../../config";
 export default function Messenger() {
   const [conversations, setConversations] = useState([]);
   const [currentChat, setCurrentChat] = useState(null);
@@ -51,7 +51,7 @@ export default function Messenger() {
   useEffect(() => {
     const getConversations = async () => {
       try {
-        const res = await axios.get("/conversations/" + user._id);
+        const res = await Axios.get("/conversations/" + user._id);
         setConversations(res.data);
       } catch (err) {
         console.log(err);
@@ -63,7 +63,7 @@ export default function Messenger() {
   useEffect(() => {
     const getMessages = async () => {
       try {
-        const res = await axios.get("/messages/" + currentChat?._id);
+        const res = await Axios.get("/messages/" + currentChat?._id);
         setMessages(res.data);
       } catch (err) {
         console.log(err);
@@ -104,7 +104,7 @@ export default function Messenger() {
   
       try {
         
-        const res = await axios.post("/messages", message);
+        const res = await Axios.post("/messages", message);
         setMessages([...messages, res.data]);
         setNewMessage("");
       } catch (err) {

@@ -7,7 +7,7 @@ import { format } from "timeago.js";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { Dropdown } from "react-bootstrap";
-
+import Axios from "../../config";
 export default function Post({ post }) {
   const [like, setLike] = useState(post.likes.length);
   const [isLiked, setIsLiked] = useState(false);
@@ -20,7 +20,7 @@ export default function Post({ post }) {
   }, [post.likes, currentUser._id]);
   const likeHandler = async () => {
     try {
-      const { data } = await axios.put("/posts/" + post._id + "/like", {
+      const { data } = await Axios.put("/posts/" + post._id + "/like", {
         userId: currentUser._id,
       });
       console.log(data);
@@ -37,7 +37,7 @@ export default function Post({ post }) {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const res = await axios.get(`/users?userId=${post.userId}`);
+      const res = await Axios.get(`/users?userId=${post.userId}`);
       setUser(res.data);
     };
     fetchUser();
@@ -49,7 +49,7 @@ export default function Post({ post }) {
     
     try{
 
-      const res = await axios.delete(`/posts/${post._id}`,{data:{userId:currentUser._id}});
+      const res = await Axios.delete(`/posts/${post._id}`,{data:{userId:currentUser._id}});
       window.location.reload();
       console.log(res);
     }catch(err){

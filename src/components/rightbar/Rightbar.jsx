@@ -12,6 +12,7 @@ import { Description, PermMedia } from "@material-ui/icons";
 import { Add, Remove } from "@material-ui/icons";
 import { Dropdown } from "react-bootstrap";
 import { useRef } from "react";
+import Axios from "../../config";
 export default function Rightbar({ user }) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [friends, setFriends] = useState([]);
@@ -34,13 +35,13 @@ export default function Rightbar({ user }) {
     try {
       if (followed) {
         console.log("unfollwed");
-        await axios.put("/users/" + user._id + "/unfollow", {
+        await Axios.put("/users/" + user._id + "/unfollow", {
           userId: currentUser._id,
         });
         dispatch({ type: "UNFOLLOW", payload: user._id });
       } else {
         console.log("unclicked");
-        await axios.put("/users/" + user._id + "/follow", {
+        await Axios.put("/users/" + user._id + "/follow", {
           userId: currentUser._id,
         });
         dispatch({ type: "FOLLOW", payload: user._id });
