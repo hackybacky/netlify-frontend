@@ -21,7 +21,7 @@ export default function Messenger() {
   const scrollRef = useRef();
 
   useEffect(() => {
-    socket.current = io("ws://https://salty-temple-86005.herokuapp.com");
+    socket.current = io("https://salty-temple-86005.herokuapp.com");
     socket.current.on("getMessage", (data) => {
       setArrivalMessage({
         sender: data.senderId,
