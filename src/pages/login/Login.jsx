@@ -19,12 +19,15 @@ export default function Login() {
     const handleRegisterClick=()=>{
         navigate('/register');
     }
+    const handleForget=()=>{
+        
+    }
     
     return (
         <div className="login">
             <div className="loginWrapper">
                 <div className="loginLeft">
-                    <h3 className="loginLogo">Login karo </h3>
+                    <h3 className="loginLogo">Login  </h3>
                     <span className="loginDesc">
                         connect with your favourite competetive coders
                     </span>
@@ -35,7 +38,7 @@ export default function Login() {
                         <input placeholder='Password' type='password' required minLength="6" className="loginInput" ref={password} />
                         <button className='loginButton' disabled={isFetching}> {isFetching ? <CircularProgress 
                             color="primary" size="25px" /> : "Log in"} </button>
-                        <span className="loginForgot"> Forgot login details</span>
+                        <span className="loginForgot" onClick={()=>handleForget}> Forgot login details</span>
                     </form>
                         <button className="loginRegisterButton" onClick={handleRegisterClick}>
                             {isFetching ? <CircularProgress color="primary" size="25px" /> : "Create account"}
