@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios';
 const Axios = axios.create({
-  baseURL: 'https://safe-shore-72480.herokuapp.com/api/',
+  baseURL: 'https://social-media-backend-hareesh.onrender.com/api/',
   // timeout: 1000,
   // headers: {
   //   'Accept': 'application/vnd.GitHub.v3+json',
